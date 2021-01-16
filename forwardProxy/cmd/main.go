@@ -22,7 +22,7 @@ func main() {
 	if err := proxy.ListenAndServe(); err != nil {
 		defer funcFatalLog.Str("method", "main").Str("when", "start proxy").
 			Err(err).Msg("exiting")
-		panic("все пошло по пизде")
+		panic("все пошло по пизде, все плохо")
 	}
 
 }
