@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbe85576-f3c7-40dd-9e3a-748205e94cef" name="Default Changelist" comment="second commit">
-      <change afterPath="$PROJECT_DIR$/forwardProxy/pkg/config/config.go" afterDir="false" />
+    <list default="true" id="bbe85576-f3c7-40dd-9e3a-748205e94cef" name="Default Changelist" comment="changed loggers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forwardProxy/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forwardProxy/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forwardProxy/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forwardProxy/pkg/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/pkg/config/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forwardProxy/pkg/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/pkg/handler/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forwardProxy/pkg/logging/logging.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/pkg/logging/logging.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,13 +46,16 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projects/Projects/myProxy" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoProjectSettingsConfigurable" />
   </component>
   <component name="RunManager">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="forwardProxy" />
       <working_directory value="$PROJECT_DIR$" />
+      <envs>
+        <env name="PORT" value="127.0.0.1:8080" />
+      </envs>
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$/forwardProxy/cmd/main.go" />
       <directory value="$PROJECT_DIR$" />
@@ -84,7 +86,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="second commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="second commit" />
+    <MESSAGE value="changed loggers" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed loggers" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

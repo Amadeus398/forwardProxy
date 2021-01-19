@@ -10,36 +10,42 @@ type Logs struct {
 	errorLog *zerolog.Event
 	warnLog  *zerolog.Event
 	fatLog   *zerolog.Event
+	method   string
+	module   string
+}
+
+func NewLogs(method, module string) *Logs {
+	return &Logs{method: method, module: module}
+}
+
+func (l Logs) addMetadata(e *zerolog.Event) *zerolog.Event {
+	return e.Str("module", l.module).Str("method", l.method)
 }
 
 func (l Logs) GetInfo() *zerolog.Event {
 	if l.infoLog == nil {
-		l.infoLog = &zerolog.Event{}
+		l.infoLog = l.addMetadata(log.Info())
 	}
-	l.infoLog = log.Info()
 	return l.infoLog
 }
 
 func (l Logs) GetError() *zerolog.Event {
 	if l.errorLog == nil {
-		l.errorLog = &zerolog.Event{}
+		l.errorLog = l.addMetadata(log.Error())
 	}
-	l.errorLog = log.Error()
 	return l.errorLog
 }
 
 func (l Logs) GetWarn() *zerolog.Event {
 	if l.warnLog == nil {
-		l.warnLog = &zerolog.Event{}
+		l.warnLog = l.addMetadata(log.Warn())
 	}
-	l.warnLog = log.Warn()
 	return l.warnLog
 }
 
 func (l Logs) GetFatal() *zerolog.Event {
 	if l.fatLog == nil {
-		l.fatLog = &zerolog.Event{}
+		l.fatLog = l.addMetadata(log.Fatal())
 	}
-	l.fatLog = log.Fatal()
 	return l.fatLog
 }
