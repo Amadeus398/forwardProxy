@@ -7,12 +7,12 @@ import (
 )
 
 var (
-	funcFatalLog = logging.Logs{}.GetFatal()
-	funcInfoLog  = logging.Logs{}.GetInfo()
+	fatalLogger = logging.Logs{}.GetFatal().Str("module", "main")
+	infoLogger  = logging.Logs{}.GetInfo().Str("module", "main")
 )
 
 func main() {
-	funcInfoLog.Str("module", "main").Msg("starting forwardProxy")
+	infoLogger.Msg("starting forwardProxy")
 
 	proxy := http.Server{
 		Addr:    "127.0.0.1:8080",
@@ -20,9 +20,9 @@ func main() {
 	}
 
 	if err := proxy.ListenAndServe(); err != nil {
-		defer funcFatalLog.Str("method", "main").Str("when", "start proxy").
+		defer fatalLogger.Str("when", "start proxy").
 			Err(err).Msg("exiting")
-		panic("все пошло по пизде, все плохо")
+		panic("The output from the program, shutdown")
 	}
 
 }

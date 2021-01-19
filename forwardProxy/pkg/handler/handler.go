@@ -15,20 +15,14 @@ type MyHandler struct {
 }
 
 var (
-	funcInfoLog = logging.Logs{}.GetInfo().Str("method", "serveHTTP")
-	funcErrLog  = logging.Logs{}.GetError().Str("method", "serveHTTP")
+	infoLogger = logging.Logs{}.GetInfo().Str("module", "handler").Str("method", "serveHTTP")
+	errLogger  = logging.Logs{}.GetError().Str("module", "handler").Str("method", "serveHTTP")
+	warnLogger = logging.Logs{}.GetWarn().Str("module", "handler").Str("method", "serveHTTP")
 )
 
-func init() {
-	logging.Logs{}.GetInfo().Str("module", "handler").Msg("starting handler")
-	logging.Logs{}.GetError().Str("module", "handler").Msg("starting handler")
-	//logging.Logs{}.GetWarn().Str("module", "handler").Msg("starting")
-}
-
-//
 func (m MyHandler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
-	funcInfoLog.Str("when", "starting processing of request").Str("url", request.RequestURI).
-		Msg("started")
+	infoLogger.Str("when", "starting processing of request").Str("url", request.RequestURI).
+		Msg("started handler")
 
 	ctx := context.TODO()
 	myRequest := request.Clone(ctx)
@@ -36,7 +30,7 @@ func (m MyHandler) ServeHTTP(writer http.ResponseWriter, request *http.Request) 
 
 	resp, err := m.getClient().Do(myRequest)
 	if err != nil {
-		funcErrLog.Str("when", "completed request, start response").Str("url", request.RequestURI).
+		errLogger.Str("when", "completed request, start response").Str("url", request.RequestURI).
 			Msg("unable to get response")
 
 		writer.Header().Set("Content-type", "text/plain; charset=utf-8")
@@ -44,22 +38,22 @@ func (m MyHandler) ServeHTTP(writer http.ResponseWriter, request *http.Request) 
 		writer.Header().Set("Content-Length", fmt.Sprintf("%d", len(bytesMonkeys)))
 		writer.WriteHeader(http.StatusInternalServerError)
 		if _, err := writer.Write(bytesMonkeys); err != nil {
-			funcErrLog.Str("when", "sending response").Msg("can't send response to user")
+			errLogger.Str("when", "sending response").Msg("can't send response to user")
 			return
 		}
 		return
 	}
 	defer func() {
 		if err := resp.Body.Close(); err != nil {
-			funcErrLog.Str("when", "close body").
-				Msg("still shit")
+			errLogger.Str("when", "close body").
+				Msg("unable to close Body")
 			return
 		}
 	}()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		funcErrLog.Str("when", "reading response body").Msg("unable to read Body")
+		errLogger.Str("when", "reading response body").Msg("unable to read Body")
 		return
 	}
 	for header, headerVal := range resp.Header {
@@ -68,10 +62,14 @@ func (m MyHandler) ServeHTTP(writer http.ResponseWriter, request *http.Request) 
 		}
 	}
 	writer.WriteHeader(resp.StatusCode)
-	// TODO warnlog
+	if resp.StatusCode >= 400 && resp.StatusCode < 500 {
+		warnLogger.Str("when", "status code response").Msg("status code 4xx")
+	} else if resp.StatusCode >= 500 {
+		warnLogger.Str("when", "status code response").Msg("status code 5xx")
+	}
 
 	if _, err := writer.Write(body); err != nil {
-		funcErrLog.Str("when", "writing body").Msg("unable to write body")
+		errLogger.Str("when", "writing body").Msg("unable to write body")
 		return
 	}
 
