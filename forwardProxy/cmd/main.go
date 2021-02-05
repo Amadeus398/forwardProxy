@@ -10,8 +10,8 @@ import (
 
 func main() {
 	loggers := logging.NewLogs("main", "cmd")
-
 	loggers.GetInfo().Msg("starting forwardProxy")
+
 	cache := &config.EnvCache{}
 	if err := envconfig.Process("", cache); err != nil {
 		loggers.GetFatal().Err(err).Msg("unable to parse the environment")

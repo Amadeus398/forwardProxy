@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbe85576-f3c7-40dd-9e3a-748205e94cef" name="Default Changelist" comment="changed loggers">
+    <list default="true" id="bbe85576-f3c7-40dd-9e3a-748205e94cef" name="Default Changelist" comment="changed loggers, added config">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forwardProxy/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forwardProxy/pkg/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/pkg/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forwardProxy/pkg/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/pkg/handler/handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forwardProxy/pkg/logging/logging.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/pkg/logging/logging.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +84,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="second commit" />
     <MESSAGE value="changed loggers" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed loggers" />
+    <MESSAGE value="changed loggers, added config" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed loggers, added config" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
