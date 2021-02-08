@@ -1,8 +1,20 @@
 package logging
 
 import (
+	"fmt"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
+	"io"
+	"os"
+	"sync"
+	"time"
+)
+
+const logFilename = "logging.txt"
+
+var (
+	once    sync.Once
+	logFile *os.File
 )
 
 type Logs struct {
@@ -14,8 +26,36 @@ type Logs struct {
 	module   string
 }
 
-func NewLogs(method, module string) *Logs {
-	return &Logs{method: method, module: module}
+// NewLogs returns a method and a module,
+// depending on which module it is called in.
+//
+// once.Do joins 2 io.Writer and writes
+// logger messages to the file
+// and to the os.Stdout.
+//
+// the file closing function
+// must be called in the
+// module main only.
+func NewLogs(method, module string) (logs *Logs, f func()) {
+	once.Do(func() {
+		var err error
+		logFile, err = os.OpenFile(logFilename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
+		if err != nil {
+			fmt.Println("ощщщщибкеее, эщщщкерррре - щеккерьберреее")
+			return
+		}
+		colorLogger := zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: time.RFC3339}
+		log.Logger = log.Output(io.MultiWriter(zerolog.SyncWriter(logFile), colorLogger))
+	})
+
+	return &Logs{method: method, module: module}, cleanup
+}
+
+// cleanup closes file *os.File
+func cleanup() {
+	if err := logFile.Close(); err != nil {
+		return
+	}
 }
 
 func (l Logs) addMetadata(e *zerolog.Event) *zerolog.Event {

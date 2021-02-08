@@ -17,7 +17,7 @@ type MyHandler struct {
 
 func (m MyHandler) getLoggers() *logging.Logs {
 	if m.l == nil {
-		m.l = logging.NewLogs("serveHTTP", "handler")
+		m.l, _ = logging.NewLogs("serveHTTP", "handler")
 	}
 	return m.l
 }
