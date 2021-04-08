@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbe85576-f3c7-40dd-9e3a-748205e94cef" name="Default Changelist" comment="added handler doc">
-      <change afterPath="$PROJECT_DIR$/forwardProxy/pkg/config/doc.go" afterDir="false" />
+    <list default="true" id="bbe85576-f3c7-40dd-9e3a-748205e94cef" name="Default Changelist" comment="added loglevel env, logfile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forwardProxy/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forwardProxy/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forwardProxy/pkg/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/pkg/config/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forwardProxy/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forwardProxy/pkg/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/pkg/handler/handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forwardProxy/pkg/logging/logging.go" beforeDir="false" afterPath="$PROJECT_DIR$/forwardProxy/pkg/logging/logging.go" afterDir="false" />
     </list>
@@ -41,14 +39,16 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projects/Projects/myProxy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoProjectSettingsConfigurable" />
   </component>
   <component name="RunManager">
@@ -71,6 +71,25 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bbe85576-f3c7-40dd-9e3a-748205e94cef" name="Default Changelist" comment="added loglevel env, logfile" />
+      <created>1613666118328</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613666118328</updated>
+      <workItem from="1613666120083" duration="8740000" />
+      <workItem from="1613843068986" duration="143000" />
+      <workItem from="1614336412960" duration="601000" />
+      <workItem from="1614348274486" duration="1168000" />
+      <workItem from="1614645815167" duration="344000" />
+      <workItem from="1614655636089" duration="876000" />
+      <workItem from="1614688064522" duration="3844000" />
+      <workItem from="1614789703354" duration="11437000" />
+      <workItem from="1615302304565" duration="1223000" />
+    </task>
+    <servers />
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
@@ -92,7 +111,8 @@
     <MESSAGE value="changed loggers" />
     <MESSAGE value="changed loggers, added config" />
     <MESSAGE value="added handler doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="added handler doc" />
+    <MESSAGE value="added loglevel env, logfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="added loglevel env, logfile" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

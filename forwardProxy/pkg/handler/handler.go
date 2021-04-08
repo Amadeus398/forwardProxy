@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-const monkeys = "40 тысяч обезьян в жопу сунули банан"
+const message = "If you see this page, an error has occurred"
 
 type MyHandler struct {
 	c *http.Client
@@ -36,11 +36,11 @@ func (m MyHandler) ServeHTTP(writer http.ResponseWriter, request *http.Request) 
 			Str("url", request.RequestURI).Msg("unable to get response")
 
 		writer.Header().Set("Content-type", "text/plain; charset=utf-8")
-		bytesMonkeys := []byte(monkeys)
+		bytesMonkeys := []byte(message)
 		writer.Header().Set("Content-Length", fmt.Sprintf("%d", len(bytesMonkeys)))
 		writer.WriteHeader(http.StatusInternalServerError)
 		if _, err := writer.Write(bytesMonkeys); err != nil {
-			m.getLoggers().GetError().Str("when", "sending response").Msg("can't send response to user")
+			m.getLoggers().GetError().Str("when", "sending response").Msg("can't send response to userName")
 			return
 		}
 		return

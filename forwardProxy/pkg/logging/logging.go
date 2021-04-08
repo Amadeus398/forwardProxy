@@ -41,7 +41,7 @@ func NewLogs(method, module string) (logs *Logs, f func()) {
 		var err error
 		logFile, err = os.OpenFile(logFilename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
 		if err != nil {
-			fmt.Println("ощщщщибкеее, эщщщкерррре - щеккерьберреее")
+			fmt.Println("failed to open file")
 			return
 		}
 		colorLogger := zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: time.RFC3339}
@@ -54,7 +54,7 @@ func NewLogs(method, module string) (logs *Logs, f func()) {
 // cleanup closes file *os.File
 func cleanup() {
 	if err := logFile.Close(); err != nil {
-		return
+		panic(err)
 	}
 }
 
